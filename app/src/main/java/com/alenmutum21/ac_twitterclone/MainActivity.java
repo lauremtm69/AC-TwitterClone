@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
                 allinfo = "";
                 ParseQuery<ParseObject> queryAll = ParseQuery.getQuery("College");
+
+                queryAll.whereGreaterThan("roll",200);
+                queryAll.setLimit(1);
+
                 queryAll.findInBackground(new FindCallback<ParseObject>() {
                     @Override
                     public void done(List<ParseObject> objects, ParseException e) {
@@ -107,15 +111,15 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
-                                FancyToast.makeText(MainActivity.this,"infos Saved succesfully  ! " + Student.get("name"),FancyToast.LENGTH_LONG,FancyToast.SUCCESS,true).show();
+                                FancyToast.makeText(MainActivity.this,"infos Saved succesfully  ! " + Student.get("name"),FancyToast.LENGTH_LONG,FancyToast.SUCCESS,false).show();
                             } else {
                                 String error = e.getMessage().toString();
-                                FancyToast.makeText(MainActivity.this,"Error at: "+ error,FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
+                                FancyToast.makeText(MainActivity.this,"Error at: "+ error,FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
                             }
                         }
                     });
                 }catch (Exception e){
-                    FancyToast.makeText(MainActivity.this,"Error at: "+ e.getMessage(),FancyToast.LENGTH_LONG,FancyToast.ERROR,true).show();
+                    FancyToast.makeText(MainActivity.this,"Error at: "+ e.getMessage(),FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();
                 }
 
             }
