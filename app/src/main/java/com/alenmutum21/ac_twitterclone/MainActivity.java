@@ -1,5 +1,6 @@
 package com.alenmutum21.ac_twitterclone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +22,7 @@ import com.shashank.sony.fancytoastlib.FancyToast;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private Button signin,btnGetalldata;
+    private Button signin,btnGetalldata,btnTransition;
     private EditText name,standard,roll,subject;
     private TextView txtGetData;
     private String allinfo;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         subject = findViewById(R.id.subject);
         txtGetData = findViewById(R.id.txtGetData);
         btnGetalldata = findViewById(R.id.btnAllData);
+        btnTransition = findViewById(R.id.btnTransition);
 
         txtGetData.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +62,13 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+            }
+        });
+
+        btnTransition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SignUpLoginActivity.class));
             }
         });
 
